@@ -1,0 +1,11 @@
+.bsp
+.idea
+.dotty*
+.bloop
+.metals
+.vscode
+.bsp
+.sdkmanrc
+.envrc
+days/01/src/main/resources/input*.txt
+**/target
