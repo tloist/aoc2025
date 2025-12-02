@@ -11,25 +11,27 @@ def parse(filename: String = "input.txt"): List[ProductIdRange] =
     val parts = range.split("-")
     ProductIdRange(BigInt(parts(0)), BigInt(parts(1)))
 
-def isInvalid(no: BigInt): Boolean =
+type Partitioner = String => Seq[Int]
+
+def isInvalid(no: BigInt)(using partitioner: Partitioner): Boolean =
   val textual = no.toString
-  if textual.length % 2 != 0 then false
-  else
-    val (begin, end) = textual.splitAt(textual.length / 2)
-    begin == end
+  partitioner(textual).exists: divider =>
+    textual.grouped(divider).toSet.size == 1
+
+val alwaysSplitInHalf: Partitioner = textual =>
+  if textual.length % 2 == 0 then Seq(textual.length / 2) else Seq.empty
 
 @main def summing_up_invalid_ids(): Unit =
+  given Partitioner = alwaysSplitInHalf
   val sum = parse().flatMap(_.ids.filter(isInvalid)).sum
   println(s"The sum of all the invalid IDs is $sum")
 
-def isInvalid2(no: BigInt): Boolean =
-  val textual = no.toString
+val allDivider: Partitioner = textual =>
   LazyList.from(1)
     .takeWhile(_ <= textual.length / 2)
     .filter(textual.length % _ == 0)
-    .exists: divider =>
-      textual.grouped(divider).toSet.size == 1
 
 @main def summing_up_invalid_ids_2(): Unit =
-  val sum = parse().flatMap(_.ids.filter(isInvalid2)).sum
+  given Partitioner = allDivider
+  val sum = parse().flatMap(_.ids.filter(isInvalid)).sum
   println(s"The sum of all the invalid IDs now is $sum")
