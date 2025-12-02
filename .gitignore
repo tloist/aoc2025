@@ -7,5 +7,5 @@
 .bsp
 .sdkmanrc
 .envrc
-days/01/src/main/resources/input*.txt
+days/*/src/main/resources/input*.txt
 **/target

@@ -1,4 +1,3 @@
-import scala.io.Source
 
 package Day01:
     opaque type Rotation = Int

@@ -19,6 +19,10 @@ lazy val aoc2025 = project.in(file("."))
 
 
 lazy val day01 = dayProject( 1, "Secret Entrance")
+lazy val day02 = dayProject( 2, "Gift Shop").settings(
+  libraryDependencies ++= Seq(
+  )
+)
 
 def dayProject(day: Int, title: String = ""): Project = Project.apply(f"day_$day%02d", file(f"days/$day%02d"))
   .settings(
