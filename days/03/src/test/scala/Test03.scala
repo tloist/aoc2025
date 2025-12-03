@@ -4,16 +4,16 @@ import day03.*;
 class Test03 extends FunSuite {
 
   test("Initial Joltage example #1"):
-    assertEquals(findMaxJoltage(Bank(List(9,8,7,6,5,4,3,2,1,1,1,1,1,1,1))), 98)
+    assertEquals(findMaxJoltage_2(Bank(List(9,8,7,6,5,4,3,2,1,1,1,1,1,1,1))), BigInt(98))
 
   test("Initial Joltage example #2"):
-    assertEquals(findMaxJoltage(Bank(List(8,1,1,1,1,1,1,1,1,1,1,1,1,1,9))), 89)
+    assertEquals(findMaxJoltage_2(Bank(List(8,1,1,1,1,1,1,1,1,1,1,1,1,1,9))), BigInt(89))
 
   test("Initial Joltage example #3"):
-    assertEquals(findMaxJoltage(Bank(List(2,3,4,2,3,4,2,3,4,2,3,4,2,7,8))), 78)
+    assertEquals(findMaxJoltage_2(Bank(List(2,3,4,2,3,4,2,3,4,2,3,4,2,7,8))), BigInt(78))
 
   test("Initial Joltage example #4"):
-    assertEquals(findMaxJoltage(Bank(List(8,1,8,1,8,1,9,1,1,1,1,2,1,1,1))), 92)
+    assertEquals(findMaxJoltage_2(Bank(List(8,1,8,1,8,1,9,1,1,1,1,2,1,1,1))), BigInt(92))
 
   // -----------------------------
 
