@@ -23,6 +23,8 @@ lazy val day02 = dayProject( 2, "Gift Shop")
 lazy val day03 = dayProject( 3, "Lobby")
 lazy val day04 = dayProject( 4, "Printing Department")
   .dependsOn(map2d)
+lazy val day05 = dayProject( 5, "Cafeteria")
+  .settings(libraryDependencies += guava)
 
 def dayProject(day: Int, title: String = ""): Project = Project.apply(f"day_$day%02d", file(f"days/$day%02d"))
   .settings(
