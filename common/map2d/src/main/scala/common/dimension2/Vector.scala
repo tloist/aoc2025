@@ -14,3 +14,9 @@ case class Vector[C: Numeric](x: C, y: C):
   def sign: Vector[C] = Vector(x.sign, y.sign)
 
   override def toString: String = s"V($x/$y)"
+
+object Vector:
+  def up[C](using num: Numeric[C]): Vector[C] =    Vector( num.zero, -num.one)
+  def down[C](using num: Numeric[C]): Vector[C] =  Vector( num.zero,  num.one)
+  def left[C](using num: Numeric[C]): Vector[C] =  Vector(-num.one,   num.zero)
+  def right[C](using num: Numeric[C]): Vector[C] = Vector( num.one,   num.zero)
